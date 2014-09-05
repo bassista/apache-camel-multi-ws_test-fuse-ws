@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://sri.gob.ec/wsConsultaEstablecimientos" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="TwoService" targetNamespace="http://sri.gob.ec/wsConsultaEstablecimientos">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://sri.gob.ec/wsConsultaEstablecimientos" elementFormDefault="unqualified" targetNamespace="http://sri.gob.ec/wsConsultaEstablecimientos" version="1.0">
+<xs:element name="execute" type="tns:execute"/>
+<xs:element name="executeResponse" type="tns:executeResponse"/>
+<xs:complexType name="execute">
+<xs:sequence>
+<xs:element minOccurs="0" name="B" type="xs:string"/>
+<xs:element minOccurs="0" name="X" type="xs:string"/>
+<xs:element minOccurs="0" name="Y" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="executeResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="executeResponse">
+    <wsdl:part element="tns:executeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="execute">
+    <wsdl:part element="tns:execute" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Two">
+    <wsdl:operation name="execute">
+      <wsdl:input message="tns:execute" name="execute">
+    </wsdl:input>
+      <wsdl:output message="tns:executeResponse" name="executeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TwoServiceSoapBinding" type="tns:Two">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="execute">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="execute">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="executeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TwoService">
+    <wsdl:port binding="tns:TwoServiceSoapBinding" name="TwoPort">
+      <soap:address location="http://localhost:8080/externalWSTwo/Two"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://bsg.gob.ec/AccesoBSGService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="OneService" targetNamespace="http://bsg.gob.ec/AccesoBSGService">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://bsg.gob.ec/AccesoBSGService" elementFormDefault="unqualified" targetNamespace="http://bsg.gob.ec/AccesoBSGService" version="1.0">
+<xs:element name="execute" type="tns:execute"/>
+<xs:element name="executeResponse" type="tns:executeResponse"/>
+<xs:complexType name="execute">
+<xs:sequence>
+<xs:element minOccurs="0" name="A" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="executeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:retornoOne"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="retornoOne">
+<xs:sequence>
+<xs:element minOccurs="0" name="x" type="xs:string"/>
+<xs:element minOccurs="0" name="y" type="xs:string"/>
+<xs:element minOccurs="0" name="z" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="execute">
+    <wsdl:part element="tns:execute" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="executeResponse">
+    <wsdl:part element="tns:executeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="One">
+    <wsdl:operation name="execute">
+      <wsdl:input message="tns:execute" name="execute">
+    </wsdl:input>
+      <wsdl:output message="tns:executeResponse" name="executeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OneServiceSoapBinding" type="tns:One">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="execute">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="execute">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="executeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OneService">
+    <wsdl:port binding="tns:OneServiceSoapBinding" name="OnePort">
+      <soap:address location="http://localhost:8080/externalWSOne/One"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,12 @@
+<jaxws:bindings wsdlLocation="../wsdl/Two.wsdl"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:jaxws="http://java.sun.com/xml/ns/jaxws" 
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb">
+	<jaxws:bindings
+		node="wsdl:definitions/wsdl:types/xs:schema[@targetNamespace='http://ws.example.se.ec/']">
+		<jaxb:schemaBindings>
+			<jaxb:package name="ec.se.example.ws.two" />
+		</jaxb:schemaBindings>
+	</jaxws:bindings>
+</jaxws:bindings>
