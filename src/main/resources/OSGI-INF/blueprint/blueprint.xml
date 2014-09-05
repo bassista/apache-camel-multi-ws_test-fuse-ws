@@ -40,10 +40,7 @@
 	    <route id="ruta1">
 	      <from uri="cxf:bean:epInterno"/>
 	      <process ref="proccesorOne" />
-	      <camel:log message=">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ${body[0]} >>>>>>>>>>>>>>>>>>>>>>"></camel:log>
 	      <to uri="cxf:bean:epExterno1" />
-	      <camel:log message=">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ${out.body} >>>>>>>>>>>>>>>>>>>>>>"></camel:log>
-	      <camel:log message=">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ${body[0]} >>>>>>>>>>>>>>>>>>>>>>"></camel:log>
 	      <process ref="processorTwo" />
 	      <to uri="cxf:bean:epExterno2" />
 	    </route>

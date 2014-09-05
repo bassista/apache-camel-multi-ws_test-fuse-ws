@@ -23,8 +23,6 @@ public class ProccesorTwo implements Processor {
 		params.add(retorno.getX());
 		params.add(retorno.getY());
 		inMessage.setBody(params,ArrayList.class);
-		//inMessage.setHeader(CxfConstants.OPERATION_NAME, "obtenerEstablecimientos");
-		System.out.println(inMessage.getHeader("value_B"));
 		inMessage.setHeader(CxfConstants.OPERATION_NAMESPACE, "http://sri.gob.ec/wsConsultaEstablecimientos");
 	}
 

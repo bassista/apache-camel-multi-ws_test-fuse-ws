@@ -18,7 +18,6 @@ public class ProccesorOne implements Processor {
 		List<String> params = new ArrayList<String>();
 		params.add(msgListIn.get(0).toString());
 		inMessage.setBody(params,ArrayList.class);
-		//inMessage.setHeader(CxfConstants.OPERATION_NAME, "obtenerEstablecimientos");
 		inMessage.setHeader("value_B", msgListIn.get(1).toString());
 		inMessage.setHeader(CxfConstants.OPERATION_NAMESPACE, "http://bsg.gob.ec/AccesoBSGService");
 	}
